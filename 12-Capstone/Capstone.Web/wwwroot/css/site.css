@@ -43,3 +43,7 @@ body {
     width: auto;
     height: 150px;
 }
+
+#park-info-table {
+    width: 25%;
+}

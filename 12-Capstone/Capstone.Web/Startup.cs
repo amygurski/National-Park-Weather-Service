@@ -37,6 +37,7 @@ namespace Capstone.Web
 
             connectionString = Configuration.GetConnectionString("Default");
             services.AddTransient<IParkDAO, ParkSqlDAO>((x) => new ParkSqlDAO(connectionString));
+            services.AddTransient<IWeatherDAO, WeatherSqlDAO>((x) => new WeatherSqlDAO(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

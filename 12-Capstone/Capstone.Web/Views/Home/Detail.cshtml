@@ -1,63 +1,55 @@
-﻿@model Park
+﻿@model ParkDetailVM
 @{
     ViewData["Title"] = "Detail";
 }
 
 <br />
-<img src="~/images/parks/@(Model.ParkCode).jpg" alt="park detail image" />
-<h2>@Model.ParkName</h2>
-<p>@Model.InspirationalQuote - <em>@Model.InspirationalQuoteSource</em></p>
+<img src="~/images/parks/@(Model.Park.ParkCode).jpg" alt="park detail image" />
+<h2>@Model.Park.ParkName</h2>
+<p>@Model.Park.InspirationalQuote - <em>@Model.Park.InspirationalQuoteSource</em></p>
 
 @*Table of all of the Park details*@
 <table class="table table-condensed" id="park-info-table">
     <tr>
         <th class="table-header">State</th>
-        <td class="info-row">@Model.State</td>
+        <td class="info-row">@Model.Park.State</td>
     </tr>
     <tr>
         <th class="table-header">Acreage</th>
-        <td class="info-row">@Model.Acreage</td>
+        <td class="info-row">@Model.Park.Acreage</td>
     </tr>
     <tr>
         <th class="table-header">Elevation</th>
-        <td class="info-row">@Model.ElevationInFeet</td>
+        <td class="info-row">@Model.Park.ElevationInFeet</td>
     </tr>
     <tr>
         <th class="table-header">Trails</th>
-        <td class="info-row">@Model.MilesOfTrail</td>
+        <td class="info-row">@Model.Park.MilesOfTrail</td>
     </tr>
     <tr>
         <th class="table-header">Campsites</th>
-        <td class="info-row">@Model.NumberOfCampsites</td>
+        <td class="info-row">@Model.Park.NumberOfCampsites</td>
     </tr>
     <tr>
         <th class="table-header">Climate</th>
-        <td class="info-row">@Model.Climate</td>
+        <td class="info-row">@Model.Park.Climate</td>
     </tr>
     <tr>
         <th class="table-header">Year Founded</th>
-        <td class="info-row">@Model.YearFounded</td>
+        <td class="info-row">@Model.Park.YearFounded</td>
     </tr>
     <tr>
         <th class="table-header">Annual Visitor Count</th>
-        <td class="info-row">@Model.AnnualVisitorCount</td>
+        <td class="info-row">@Model.Park.AnnualVisitorCount</td>
     </tr>
     <tr>
         <th class="table-header">Number Of Animal Species</th>
-        <td class="info-row">@Model.NumberOfAnimalSpecies</td>
+        <td class="info-row">@Model.Park.NumberOfAnimalSpecies</td>
     </tr>
     <tr>
         <th class="table-header">Entry Fee</th>
-        <td class="info-row">@Model.EntryFee</td>
+        <td class="info-row">@Model.Park.EntryFee</td>
     </tr>
 </table>
 
-<p>@Model.ParkDescription</p>
-
-@*Table of all of the Park details*@
-
-<style>
-    #park-info-table {
-        width: 25%;
-    }
-</style>
+<p>@Model.Park.ParkDescription</p>
