@@ -55,6 +55,15 @@
 <p>@Model.Park.ParkDescription</p>
 
 @* Weather Forecast *@
+<div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary active">
+        <input type="radio" name="unit" value="F" checked>°F
+    </label>
+    <label class="btn btn-primary">
+        <input type="radio" name="unit" value="C">°C
+    </label>
+</div>
+
 @foreach (WeatherForecast weather in @Model.FiveDayWeather)
 {
     if (weather.FiveDayForecastValue == 1)
@@ -73,3 +82,5 @@
         <p>@weather.WeatherRecommendation</p>
     }
 }
+
+
