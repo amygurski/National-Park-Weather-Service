@@ -53,3 +53,23 @@
 </table>
 
 <p>@Model.Park.ParkDescription</p>
+
+@* Weather Forecast *@
+@foreach (WeatherForecast weather in @Model.FiveDayWeather)
+{
+    if (weather.FiveDayForecastValue == 1)
+    {
+        <h4>Today</h4>
+    }
+    <img src="~/images/weather/@(weather.ImageName).png" />
+    <p>High: @weather.High</p>
+    <p>Low: @weather.Low</p>
+    @if (weather.TemperatureRecommendation != null)
+    {
+        <p>@weather.TemperatureRecommendation</p>
+    }
+    @if (weather.WeatherRecommendation != null)
+    {
+        <p>@weather.WeatherRecommendation</p>
+    }
+}
