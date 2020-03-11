@@ -23,11 +23,15 @@ namespace Capstone.Web.Controllers
         /// </summary>
         public IActionResult Index()
         {
-            IList<Park> park = parkSqlDAO.GetParks();
-            return View(park);
+            IList<Park> parks = parkSqlDAO.GetParks();
+            return View(parks);
         }
 
-      
+        public IActionResult Detail(string parkCode)
+        {
+            Park park = parkSqlDAO.GetPark(parkCode);
+            return View(park);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

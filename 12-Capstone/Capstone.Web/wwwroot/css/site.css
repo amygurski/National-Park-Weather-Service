@@ -35,3 +35,8 @@ body {
         display: none;
     }
 }
+
+img[alt="logo"] {
+    height = 100px;
+    width = auto;
+}

@@ -8,7 +8,7 @@
     {
         <div class="row">
             <div class="column home-left">
-                <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.ParkCode"><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
+                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
             </div>
             <div class="column home-right">
                 <h3>@item.ParkName</h3>
