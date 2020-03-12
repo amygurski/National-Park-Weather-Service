@@ -72,28 +72,19 @@ body {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap ;
-    width: 18%;
-}
-/*
-.weatherPic{
-    display: inline-flex;
     width: 150px;
-    height: auto;
 }
-
-.weatherHigh{
-   display: inline-flex; 
+.indexPic{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    height:auto;
+    }
+.indexPic > a > img{
+    width:350px;
+    padding: 25px 10px;
 }
-
-.weatherLow{
-
+.indexPic > .tester{
+    padding-top: 25px;
 }
-
-.weatherTemp{
-
-}
-
-.weatherdRec{
-
-}
-    */

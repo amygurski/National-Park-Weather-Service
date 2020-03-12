@@ -6,28 +6,29 @@
     <form asp-controller="Home" asp-action="Index">
         @foreach (Park item in Model)
         {
-            <div class="row">
-                <div class="column home-left">
-                    <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
-                </div>
-                <div class="column home-right">
-                    <div id=Parkname>@item.ParkName</div>
-                    <div id="description">@item.ParkDescription</div>
+            <div class="indexPic">
+
+                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
+                <div class="tester">
+                    <h3><strong>@item.ParkName</strong> </h3>
+                    <p> @item.ParkDescription</p>
                 </div>
             </div>
+
+
         }
     </form>
 </div>
- <style>
+@*<style>
     img {
-        width:35%;
-        display:inline-block
+        width: 35%;
+        display: inline-block
     }
 
     #Parkname {
         position: relative;
         width: 50%;
-      /*  text-align: center; */
+        /*  text-align: center; */
     }
 
     #description {
@@ -35,4 +36,4 @@
         vertical-align: top;
         margin-top: 20px;
     }
-</style>
+</style>*@
