@@ -62,6 +62,7 @@
     <label class="btn btn-primary">
         <input type="radio" name="unit" value="C">°C
     </label>
+    <input type="submit" value="Change" class="btn btn-warning"/>
 </div>
 
 @foreach (WeatherForecast weather in @Model.FiveDayWeather)
@@ -70,17 +71,20 @@
     {
         <h4>Today</h4>
     }
-    <img src="~/images/weather/@(weather.ImageName).png" />
-    <p>High: @weather.High</p>
-    <p>Low: @weather.Low</p>
-    @if (weather.TemperatureRecommendation != null)
-    {
-        <p>@weather.TemperatureRecommendation</p>
-    }
-    @if (weather.WeatherRecommendation != null)
-    {
-        <p>@weather.WeatherRecommendation</p>
-    }
+    <div class="Weather">
+        <img src="~/images/weather/@(weather.ImageName).png" />
+        <p>High: @weather.High</p>
+        <p>Low: @weather.Low</p>
+        @if (weather.TemperatureRecommendation != null)
+        {
+            <p>@weather.TemperatureRecommendation</p>
+        }
+        @if (weather.WeatherRecommendation != null)
+        {
+            <div class="weatherRec"> <p>@weather.WeatherRecommendation</p></div>
+        }
+    </div>
 }
+
 
 

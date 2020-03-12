@@ -60,10 +60,7 @@ body {
     width: 100%;
 }
 
-#foodType {
-    font-size: 16px;
-    margin-top: -10px;
-}
+
 
 #description {
     display: inline-block;
@@ -71,4 +68,30 @@ body {
     vertical-align: top;
     margin-top: -20px;
 }
+.Weather{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+/*
+.weatherPic{
+    display: inline-flex;
+    width: 150px;
+    height: auto;
+}
 
+.weatherHigh{
+   display: inline-flex; 
+}
+
+.weatherLow{
+
+}
+
+.weatherTemp{
+
+}
+
+.weatherdRec{
+
+}
+    */
