@@ -5,9 +5,12 @@ body {
     padding-bottom: 20px;
 }
 
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    
+    
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -47,3 +50,25 @@ body {
 #park-info-table {
     width: 25%;
 }
+.row > img
+ {
+    width: 29%;
+    display: inline-block;
+}
+
+.detailImg {
+    width: 100%;
+}
+
+#foodType {
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+#description {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    margin-top: -20px;
+}
+

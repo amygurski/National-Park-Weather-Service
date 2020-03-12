@@ -2,18 +2,37 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<form asp-controller="Home" asp-action="Index">
-    @foreach (Park item in Model)
-    {
-        <div class="row">
-            <div class="column home-left">
-                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
+<div class="container">
+    <form asp-controller="Home" asp-action="Index">
+        @foreach (Park item in Model)
+        {
+            <div class="row">
+                <div class="column home-left">
+                    <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
+                </div>
+                <div class="column home-right">
+                    <div id=Parkname>@item.ParkName</div>
+                    <div id="description">@item.ParkDescription</div>
+                </div>
             </div>
-            <div class="column home-right">
-                <h3>@item.ParkName</h3>
-                <h4 id="price">@item.ParkDescription</h4>
-            </div>
-        </div>
+        }
+    </form>
+</div>
+ <style>
+    img {
+        width:35%;
+        display:inline-block
     }
-</form>
+
+    #Parkname {
+        position: relative;
+        width: 50%;
+      /*  text-align: center; */
+    }
+
+    #description {
+        width: 48%;
+        vertical-align: top;
+        margin-top: 20px;
+    }
+</style>
