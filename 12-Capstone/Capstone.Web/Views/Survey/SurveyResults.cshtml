@@ -1,16 +1,49 @@
-﻿@model IList<Survey>
+﻿@model IList<SurveyResultVM>
 @{
     ViewData["Title"] = "SurveyResults";
 }
 
-<h2>The Nation's Favorite Parks</h2>
+@* When redirected here from survey page, show the user that their voted was logged. *@
+@{
+    string msg = (string)TempData["Message"];
 
-<table>
-    @foreach (Survey survey in Model)
+    if (!String.IsNullOrEmpty(msg))
+    {
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>@msg</strong>
+        </div>
+    }
+}
+
+@* Display survey results in descending order from most votes to least. 
+    Parks with no votes are not shown. *@
+
+<h2>The Nation's Favorite Parks</h2>
+<p>Here are the results of the survey for the nation's favorite park:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Park</th>
+            <th>Votes</th>
+        </tr>
+    </thead>
+    @foreach (SurveyResultVM item in Model)
     {
         <tr>
-            <td>@survey.</td>
+            <td><img src="~/images/parks/@(item.ParkCode).jpg" alt="survey park image"></td>
+            <td><h3>@item.ParkName</h3></td>
+            <td><h3>@item.Votes</h3></td>
         </tr>
     }
 </table>
+
+<style>
+    img[alt="survey park image"] {
+        height: 150px;
+        width: auto;
+    }
+</style>
 

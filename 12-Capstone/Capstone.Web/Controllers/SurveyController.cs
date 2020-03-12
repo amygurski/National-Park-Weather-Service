@@ -25,15 +25,27 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            Survey survey = new Survey();
             List<SelectListItem> parks = parkSqlDAO.GetParkNames();
-            Survey survey = new Survey(parks);
+            survey.Parks = parks;
+
             return View(survey);
         }
 
         [HttpPost]
         public IActionResult Index(Survey survey)
         {
+            if (!ModelState.IsValid)
+            {
+                List<SelectListItem> parks = parkSqlDAO.GetParkNames();
+                survey.Parks = parks;
+                return View(survey);
+            }
+
             bool surveySaved = surveyResultsSqlDAO.SaveSurvey(survey);
+
+            TempData["Message"] = "Your vote has been logged.";
+
             return RedirectToAction("SurveyResults");
         }
 
@@ -42,6 +54,5 @@ namespace Capstone.Web.Controllers
             IList<SurveyResultVM> results = surveyResultsSqlDAO.GetSurveyResults();
             return View(results);
         }
-
     }
 }
