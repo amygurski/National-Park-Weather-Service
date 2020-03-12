@@ -53,17 +53,18 @@
 </table>
 
 <p>@Model.Park.ParkDescription</p>
-
-@* Weather Forecast *@
-<div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-primary active">
-        <input type="radio" name="unit" value="F" checked>°F
-    </label>
-    <label class="btn btn-primary">
-        <input type="radio" name="unit" value="C">°C
-    </label>
-    <input type="submit" value="Change" class="btn btn-warning"/>
-</div>
+<form asp-controller="Home" asp-action="Detail" method="post">
+    @* Weather Forecast *@
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+            <input type="radio" name="unit" value="F" checked>°F
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="unit" value="C">°C
+        </label>
+        <input type="submit" value="Change" class="btn btn-warning" />
+    </div>
+</form>
 
 @foreach (WeatherForecast weather in @Model.FiveDayWeather)
 {
