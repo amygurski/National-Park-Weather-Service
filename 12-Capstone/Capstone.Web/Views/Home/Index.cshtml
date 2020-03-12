@@ -2,38 +2,20 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+@* Displays all of the parks *@
 <div class="container">
     <form asp-controller="Home" asp-action="Index">
         @foreach (Park item in Model)
         {
-            <div class="indexPic">
-
+            <div class="home-section">
+                @*If the user clicks an image, go to detail page for that park.*@
                 <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
-                <div class="tester">
+                <div class="home-right">
                     <h3><strong>@item.ParkName</strong> </h3>
                     <p> @item.ParkDescription</p>
                 </div>
             </div>
-
-
         }
     </form>
 </div>
-@*<style>
-    img {
-        width: 35%;
-        display: inline-block
-    }
-
-    #Parkname {
-        position: relative;
-        width: 50%;
-        /*  text-align: center; */
-    }
-
-    #description {
-        width: 48%;
-        vertical-align: top;
-        margin-top: 20px;
-    }
-</style>*@

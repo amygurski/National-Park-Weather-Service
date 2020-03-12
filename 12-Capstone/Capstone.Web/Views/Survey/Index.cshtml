@@ -2,13 +2,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2>Survey</h2>
+@*Form for user to participate in survey.*@
+<h2>Park Survey</h2>
 
 <form method="post" asp-controller="Survey" asp-action="Index">
     <table class="table">
         <tbody>
             <tr>
+                @*Select favorite park from drop-down menu of parks in database*@
                 <th><label asp-for="ParkCode">Favorite Park: </label></th>
                 <td><select asp-items="Model.Parks" asp-for="ParkCode"><option selected disabled>Choose Favorite Park</option></select><span asp-validation-for="ParkCode" class="error"></span></td>
             </tr>
@@ -17,10 +18,12 @@
                 <td><input asp-for="Email" /><span asp-validation-for="Email" class="error"></span></td>
             </tr>
             <tr>
+                @*Select State from drop-down menu of the states*@
                 <th><label asp-for="ResidenceState">State of Residence: </label></th>
                 <td><select asp-items="Model.States" asp-for="ResidenceState"><option selected disabled>Choose State</option></select><span asp-validation-for="ResidenceState" class="error"></span></td>
             </tr>
             <tr>
+                @*Select activity level from options provided as radio buttons*@
                 <th><label>Activity Level: </label></th>
                 <td>
                     @foreach (string option in Model.ActivityLevelOptions)
@@ -41,9 +44,3 @@
         </tbody>
     </table>
 </form>
-
-<style>
-    .error {
-        color: red;
-    }
-</style>

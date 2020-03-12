@@ -39,6 +39,7 @@ namespace Capstone.Web.Models
             }
         }
 
+        // Make recommendations to the page visitor depending on the forecast
         public string WeatherRecommendation
         {
             get
@@ -51,13 +52,15 @@ namespace Capstone.Web.Models
                         return "Pack rain gear and wear waterproof shoes.";
                     case "thunderstorms":
                         return "Seek shelter and avoid hiking on exposed ridges.";
-                    case "sun":
+                    case "sunny":
                         return "Pack sunblock.";
                     default:
                         return null;
                 }
             }
         }
+
+        // Make recommendations to the page visitor for certain temperature conditions
         public string TemperatureRecommendation
         {
             get
@@ -66,17 +69,17 @@ namespace Capstone.Web.Models
 
                 if (High > 75)
                 {
-                    recommendation += "Bring an extra gallon of water. ";
+                    recommendation += "Bring an extra gallon of water.";
                 }
 
                 if (High - Low > 20)
                 {
-                    recommendation += "Wear breathable layers. ";
+                    recommendation += "Wear breathable layers.";
                 }
 
                 if (Low < 20)
                 {
-                    return "Danger: Exposure to frigid temperatures. ";
+                    return "Danger: Exposure to frigid temperatures.";
                 }
 
                 return recommendation;

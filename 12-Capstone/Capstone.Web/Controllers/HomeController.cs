@@ -56,12 +56,12 @@ namespace Capstone.Web.Controllers
         }
 
         /// <summary>
-        /// For if the user changes temperature
+        /// If the user changes the temperature unit, save the new selection to their session
         /// </summary>
         [HttpPost]
         public IActionResult Detail(string parkCode, string unit)
         {
-            // Write the NEW LastAccess time to session so we can get it next time
+            // Write the new temperature unit to session so we can get it next time
             HttpContext.Session.SetString("TemperatureUnit", unit);
 
             return RedirectToAction("Detail", new { parkCode });

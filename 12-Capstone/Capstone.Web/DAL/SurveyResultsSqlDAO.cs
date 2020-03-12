@@ -24,15 +24,20 @@ namespace Capstone.Web.DAL
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    //Open connection
                     conn.Open();
+
                     string sql = "INSERT INTO survey_result (parkCode, emailAddress, state, activityLevel) VALUES (@parkCode, @emailAddress, @state, @activityLevel)";
                     SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    //Prevent SQL Injection
                     cmd.Parameters.AddWithValue("@parkCode", survey.ParkCode);
                     cmd.Parameters.AddWithValue("@emailAddress", survey.Email);
                     cmd.Parameters.AddWithValue("@state", survey.ResidenceState);
                     cmd.Parameters.AddWithValue("@activityLevel", survey.ActivityLevel);
 
-                    int newSurveyId = Convert.ToInt32(cmd.ExecuteScalar());
+                    //Execute the SQL command
+                    cmd.ExecuteNonQuery();
 
                     return true;
                 }
@@ -43,6 +48,11 @@ namespace Capstone.Web.DAL
             }
         }
 
+        /// <summary>
+        /// Get survey results from database
+        /// Returns count of votes by park name
+        /// If the votes are tied, it sorts the parks alphabetically
+        /// </summary>
         public IList<SurveyResultVM> GetSurveyResults()
         {
             IList<SurveyResultVM> results = new List<SurveyResultVM>();
@@ -51,6 +61,7 @@ namespace Capstone.Web.DAL
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    //Open connection
                     conn.Open();
 
                     string sql =
@@ -62,6 +73,9 @@ namespace Capstone.Web.DAL
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
+                    //Loop through each row
+                    //All we want are the parkCode (for the image), the parkName and the number of votes per park
+                    //Add them to the list of survey results
                     while (reader.Read())
                     {
                         SurveyResultVM resultVM = new SurveyResultVM();

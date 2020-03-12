@@ -42,6 +42,7 @@ namespace Capstone.Web
 
             services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //For dependency injection
             connectionString = Configuration.GetConnectionString("Default");
             services.AddTransient<IParkDAO, ParkSqlDAO>((x) => new ParkSqlDAO(connectionString));
             services.AddTransient<IWeatherDAO, WeatherSqlDAO>((x) => new WeatherSqlDAO(connectionString));

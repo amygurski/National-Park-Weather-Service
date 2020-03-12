@@ -3,7 +3,7 @@
     ViewData["Title"] = "SurveyResults";
 }
 
-@* When redirected here from survey page, show the user that their voted was logged. *@
+@* When redirected here from survey page, show the user that their vote was logged as a dismissable message *@
 @{
     string msg = (string)TempData["Message"];
 
@@ -18,10 +18,8 @@
 
 @* Display survey results in descending order from most votes to least. 
     Parks with no votes are not shown. *@
-
 <h2>The Nation's Favorite Parks</h2>
 <p>Here are the results of the survey for the nation's favorite park:</p>
-
 <table class="table">
     <thead>
         <tr>
@@ -39,11 +37,3 @@
         </tr>
     }
 </table>
-
-<style>
-    img[alt="survey park image"] {
-        height: 150px;
-        width: auto;
-    }
-</style>
-

@@ -10,7 +10,8 @@ namespace Capstone.Web.Models
     public class Survey
     {
 
-        //User selections and inputs to record for survey: Park Code, State of Residence, Email Address, and Activity Level
+        //User selections and inputs to record for survey entry: Park Code, State of Residence, Email Address, and Activity Level
+        //All 4 fields are required to submit the survey
         [Required(ErrorMessage = "* Required")]
         public string ParkCode { get; set; }
 

@@ -17,7 +17,7 @@ namespace Capstone.Web.DAL
         }
 
         /// <summary>
-        /// Get list of all Parks from the SQL database
+        /// Get list of all Parks with all of their details from the SQL database
         /// </summary>
         public IList<Park> GetParks()
         {
@@ -54,21 +54,30 @@ namespace Capstone.Web.DAL
         }
         
         /// <summary>
-        /// Get the park for the specified id
+        /// Get the park with all it's details for the specified id
         /// </summary>
         public Park GetPark(string parkCode)
         {
             Park park = null;
             try
             {
+                // Create a new connection object
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    //Open the connection
                     conn.Open();
+
                     string sql = "select * from park where parkCode = @parkCode";
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    //Prevent SQL Injection
                     cmd.Parameters.AddWithValue("@parkCode", parkCode);
+
+                    //Execute the command
                     SqlDataReader reader = cmd.ExecuteReader();
+
+                    //Loop through each row
                     while (reader.Read())
                     {
                         park = RowToObject(reader);

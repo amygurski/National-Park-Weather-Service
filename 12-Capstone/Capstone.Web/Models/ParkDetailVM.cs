@@ -9,7 +9,7 @@ namespace Capstone.Web.Models
     {
         public Park Park { get; set; }
         public IList<WeatherForecast> FiveDayWeather { get; set; }
-        public string TemperatureUnit { get; set; }
+        public string TemperatureUnit { get; set; } //From session, stored here for view
 
     }
 }

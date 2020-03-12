@@ -9,8 +9,6 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    
-    
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -39,35 +37,20 @@ body {
     }
 }
 
-
-
+/* Sets size for National Park Geek Logo at top of Page*/
 .logo > img{
-    
     width: auto;
     height: 150px;
 }
 
+/* DETAIL PAGE STYLING */
+
+/* Sets width of table for the park details on the Detail page*/
 #park-info-table {
     width: 25%;
 }
-.row > img
- {
-    width: 29%;
-    display: inline-block;
-}
 
-.detailImg {
-    width: 100%;
-}
-
-
-
-#description {
-    display: inline-block;
-    width: 48%;
-    vertical-align: top;
-    margin-top: -20px;
-}
+/*Sets each weather day in 5-day weather forecast to inline-flex with width of 150 px*/
 .Weather{
     display: inline-flex;
     flex-direction: row;
@@ -75,21 +58,37 @@ body {
     width: 150px;
 }
 
+/*matches image width to size of weather box */
 img[alt="weather image"] {
     width: 150px;
     height: auto;
 }
-.indexPic {
+
+/* HOME PAGE STYLING */
+
+/* Sets each park element to inline-flex and fill width */
+.home-section {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
     height: auto;
 }
-.indexPic > a > img{
+
+/* Sets image size and padding on Home page for each Park */
+.home-section > a > img {
     width:350px;
-    padding: 25px 10px;
+    padding: 0px 10px 25px 10px;
 }
-.indexPic > .tester{
-    padding-top: 25px;
+
+/* SURVEY PAGE STYLING */
+.error {
+    color: red;
+}
+
+/* SURVEY RESULTS PAGE STYLING */
+
+img[alt="survey park image"] {
+    height: 150px;
+    width: auto;
 }

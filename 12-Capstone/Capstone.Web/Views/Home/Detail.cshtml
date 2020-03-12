@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Detail";
 }
+@*Display the selected park details and weather forecast for this park.*@
 
 <br />
 <img src="~/images/parks/@(Model.Park.ParkCode).jpg" alt="park detail image" />
@@ -56,16 +57,6 @@
 
 @* Change temperature units *@
 <form asp-controller="Home" asp-action="Detail" method="post">
-    @*TODO: Toggle Temperature Unit. Currently using button instead since that required JS
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary active">
-                <input type="radio" name="unit" value="F" checked>°F
-            </label>
-            <label class="btn btn-primary">
-                <input type="radio" name="unit" value="C">°C
-            </label>
-        </div>*@
-    @* Have button display the opposite unit *@
     <input type="hidden" name="parkCode" value="@Model.Park.ParkCode" />
     <input type="hidden" name="unit" value="@(Model.TemperatureUnit == "C" ? "F" : "C")">
     <input type="submit" value="Change to °@(Model.TemperatureUnit == "C" ? "F" : "C")" class="btn btn-warning" />
@@ -78,21 +69,19 @@
     {
         <h4>Today</h4>
     }
-<div class="Weather">
-    <img src="~/images/weather/@(weather.ImageName).png" alt="weather image"/>
-    @*<p> High: @weather.High &nbsp</p>
-      <p> Low: @weather.Low </p>*@
-    <p> High: @(Model.TemperatureUnit == "F" ? weather.High : (int)weather.HighCelcius) &nbsp</p>
-    <p> Low: @(Model.TemperatureUnit == "F" ? weather.Low : (int)weather.LowCelcius) </p>
-    @if (weather.TemperatureRecommendation != null)
-    {
-        <p>@weather.TemperatureRecommendation</p>
-    }
-    @if (weather.WeatherRecommendation != null)
-    {
-        <div class="weatherRec"> <p>@weather.WeatherRecommendation</p></div>
-    }
-</div>
+    <div class="Weather">
+        <img src="~/images/weather/@(weather.ImageName).png" alt="weather image"/>
+        <p>High: @(Model.TemperatureUnit == "F" ? weather.High : (int)weather.HighCelcius) &nbsp</p>
+        <p>Low: @(Model.TemperatureUnit == "F" ? weather.Low : (int)weather.LowCelcius) </p>
+        @if (weather.TemperatureRecommendation != null)
+        {
+            <p>@weather.TemperatureRecommendation</p>
+        }
+        @if (weather.WeatherRecommendation != null)
+        {
+            <div class="weatherRec"><p>@weather.WeatherRecommendation</p></div>
+        }
+    </div>
 }
 
 

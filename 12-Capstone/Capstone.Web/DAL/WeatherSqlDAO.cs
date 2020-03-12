@@ -31,6 +31,8 @@ namespace Capstone.Web.DAL
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@parkCode", parkCode);
                     SqlDataReader reader = cmd.ExecuteReader();
+
+                    //Read each of the 5 days weather and add them to the weather forecast list
                     while (reader.Read())
                     {
                         WeatherForecast weather = RowToObject(reader);
@@ -48,8 +50,6 @@ namespace Capstone.Web.DAL
         /// <summary>
         /// Turn a SQL database row into a WeatherForecast
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
         private WeatherForecast RowToObject(SqlDataReader reader)
         {
             WeatherForecast weather = new WeatherForecast()
