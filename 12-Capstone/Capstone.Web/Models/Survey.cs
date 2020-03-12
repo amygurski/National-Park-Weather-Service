@@ -9,14 +9,33 @@ namespace Capstone.Web.Models
 {
     public class Survey
     {
+        public Survey(List<SelectListItem> parks)
+        {
+            this.Parks = parks;
+        }
 
-        [Required(ErrorMessage = "*")]
+        //TODO: Required fields not working for drop downs and radio buttons
+
+        //User selections and inputs to record for survey: Park Code, State of Residence, Email Address, and Activity Level
+        [Required(ErrorMessage = "* Required")]
+        public string ParkCode { get; set; }
+
+        [Required(ErrorMessage = "* Required")]
+        public string ResidenceState { get; set; }
+
+        [Required(ErrorMessage = "* Required")]
         [Display(Name = "enter email")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
-        public List<Park> Parks { get; set; }
-        public List<string> ActivityLevel { get; } = new List<string> {"Inactive", "Sedentary", "Active", "Extremely Active"};
-        public List<SelectListItem> ResidenceState { get; } = new List<SelectListItem>
+
+        [Required(ErrorMessage = "* Required")]
+        public string ActivityLevel { get; set; }
+
+        //Options to display to user for activity levels (radio buttons), Parks (drop-down menu), and States (drop-down menu)
+        public List<string> ActivityLevelOptions { get; } = new List<string> {"Inactive", "Sedentary", "Active", "Extremely Active"};
+        public List<SelectListItem> Parks { get; set; }
+
+        public List<SelectListItem> States = new List<SelectListItem>
         {
             new SelectListItem() {Text = "Alabama", Value = "AL"},
             new SelectListItem() {Text = "Alaska", Value = "AK"},
@@ -70,8 +89,5 @@ namespace Capstone.Web.Models
             new SelectListItem() {Text = "Wisconsin", Value = "WI"},
             new SelectListItem() {Text = "Wyoming", Value = "WY"}
         };
-
-
-
     }
 }

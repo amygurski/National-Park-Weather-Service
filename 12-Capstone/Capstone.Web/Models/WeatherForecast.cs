@@ -12,6 +12,24 @@ namespace Capstone.Web.Models
         public int Low { get; set; } //Default - Fahrenheit
         public int High { get; set; } //Default - Fahrenheit
         public string Forecast { get; set; }
+
+        //Derived properties for Celcius conversion
+        //TODO: Add boolean for isCelcius. In View, choose to display Model.Low or Model.LowCelcius dependent on boolean
+        public double LowCelcius
+        {
+            get
+            {
+                return (Low - 32) * (5.0/9.0);
+            }
+        }
+
+        public double HighCelcius
+        {
+            get
+            {
+                return (High - 32) * (5.0/9.0);
+            }
+        }
         public string ImageName
         {
             get
