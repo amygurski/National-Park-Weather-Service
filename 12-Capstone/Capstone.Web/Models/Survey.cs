@@ -9,12 +9,6 @@ namespace Capstone.Web.Models
 {
     public class Survey
     {
-        public Survey(List<SelectListItem> parks)
-        {
-            this.Parks = parks;
-        }
-
-        //TODO: Required fields not working for drop downs and radio buttons
 
         //User selections and inputs to record for survey: Park Code, State of Residence, Email Address, and Activity Level
         [Required(ErrorMessage = "* Required")]

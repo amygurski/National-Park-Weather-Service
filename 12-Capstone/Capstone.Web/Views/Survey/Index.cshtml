@@ -10,7 +10,7 @@
         <tbody>
             <tr>
                 <td><label asp-for="ParkCode">Favorite Park: </label></td>
-                <td><select asp-items="Model.Parks">><option selected disabled>Choose Favorite Park</option></select></td>
+                <td><select asp-items="Model.Parks" asp-for="ParkCode"><option selected disabled>Choose Favorite Park</option></select><span asp-validation-for="ParkCode" class="error"></span></td>
             </tr>
             <tr>
                 <td><label asp-for="Email">Email:</label></td>
@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <td><label asp-for="ResidenceState">State of Residence: </label></td>
-                <td><select asp-items="Model.States"><option selected disabled>Choose State</option></select></td>
+                <td><select asp-items="Model.States" asp-for="ResidenceState"><option selected disabled>Choose State</option></select><span asp-validation-for="ResidenceState" class="error"></span></td>
             </tr>
             <tr>
                 <td><label>Activity Level: </label></td>
@@ -29,6 +29,7 @@
                             <input type="radio" asp-for="ActivityLevel" value="@option">@option
                         </label>
                     }
+                <span asp-validation-for="ActivityLevel" class="error"></span>
                 </td>
             </tr>
             <tr>
@@ -40,3 +41,9 @@
         </tbody>
     </table>
 </form>
+
+<style>
+    .error {
+        color: red;
+    }
+</style>

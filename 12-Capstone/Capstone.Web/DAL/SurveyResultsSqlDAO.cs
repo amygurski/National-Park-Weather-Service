@@ -64,7 +64,11 @@ namespace Capstone.Web.DAL
 
                     while (reader.Read())
                     {
-                        //TODO: Get SurveyResultVM results
+                        SurveyResultVM resultVM = new SurveyResultVM();
+                        resultVM.ParkCode = Convert.ToString(reader["parkCode"]);
+                        resultVM.ParkName = Convert.ToString(reader["parkName"]);
+                        resultVM.Votes = Convert.ToInt32(reader["votes"]);
+                        results.Add(resultVM);
                     }
                 }
             }
