@@ -69,8 +69,10 @@ body {
     margin-top: -20px;
 }
 .Weather{
-    display: flex;
-    flex-wrap:none ;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap ;
+    width: 18%;
 }
 /*
 .weatherPic{
