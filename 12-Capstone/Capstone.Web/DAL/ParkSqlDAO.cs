@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Web.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Capstone.Web.DAL
 {
@@ -40,8 +41,8 @@ namespace Capstone.Web.DAL
                     // Loop through each row
                     while (reader.Read())
                     {
-                        Park post = RowToObject(reader);
-                        output.Add(post);
+                        Park park = RowToObject(reader);
+                        output.Add(park);
                     }
                 }
             }
@@ -81,7 +82,49 @@ namespace Capstone.Web.DAL
             return park;
         }
 
+        /// <summary>
+        /// Get a List of SelectListItems containing the Park Name for the text 
+        /// and the park code for the value for the survey
+        /// </summary>
+        public List<SelectListItem> GetParkNames()
+        {
+            List<SelectListItem> output = new List<SelectListItem>();
 
+            try
+            {
+                // Create a new connection object
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    // Open the connection
+                    conn.Open();
+
+                    string sql = "SELECT * FROM park order by parkName";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    // Execute the command
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Loop through each row
+                    while (reader.Read())
+                    {
+                        SelectListItem item = new SelectListItem();
+                        item.Text = Convert.ToString(reader["parkName"]);
+                        item.Value = Convert.ToString(reader["parkCode"]);
+                        output.Add(item);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return output;
+        }
+
+        /// <summary>
+        /// Convert each row in the SQL database to a Park
+        /// </summary>
         private Park RowToObject(SqlDataReader reader)
         {
             Park park = new Park()

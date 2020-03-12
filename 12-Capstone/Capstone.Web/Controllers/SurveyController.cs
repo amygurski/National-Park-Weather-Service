@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Capstone.Web.DAL;
 using Capstone.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Capstone.Web.Controllers
 {
@@ -15,11 +16,15 @@ namespace Capstone.Web.Controllers
         {
             this.parkSqlDAO = parkSqlDAO;
         }
+
+        /// <summary>
+        /// Displays user survey
+        /// </summary>
         [HttpGet]
         public IActionResult Index()
         {
-            Survey survey = new Survey();
-
+            List<SelectListItem> parks = parkSqlDAO.GetParkNames();
+            Survey survey = new Survey(parks);
             return View(survey);
         }
     }

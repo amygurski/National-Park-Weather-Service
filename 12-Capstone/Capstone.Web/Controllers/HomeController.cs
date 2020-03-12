@@ -29,10 +29,16 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
+        /// <summary>
+        /// Detailed view of the selected park 
+        /// </summary>
         public IActionResult Detail(string parkCode)
         {
             ParkDetailVM vm = new ParkDetailVM();
+
             vm.Park = parkSqlDAO.GetPark(parkCode);
+
+            //Get weather forecast for selected park
             vm.FiveDayWeather = weatherSqlDAO.GetFiveDayWeatherForecast(parkCode);
 
             return View(vm);

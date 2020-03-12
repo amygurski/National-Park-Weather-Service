@@ -45,6 +45,11 @@ namespace Capstone.Web.DAL
             return output;
         }
 
+        /// <summary>
+        /// Turn a SQL database row into a WeatherForecast
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private WeatherForecast RowToObject(SqlDataReader reader)
         {
             WeatherForecast weather = new WeatherForecast()

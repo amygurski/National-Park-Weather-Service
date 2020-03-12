@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Web.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Capstone.Web.DAL
 {
@@ -10,5 +11,6 @@ namespace Capstone.Web.DAL
     {
         IList<Park> GetParks();
         Park GetPark(string parkCode);
+        List<SelectListItem> GetParkNames();
     }
 }
