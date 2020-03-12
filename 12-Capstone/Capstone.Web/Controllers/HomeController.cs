@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
 using Capstone.Web.DAL;
+using Microsoft.AspNetCore.Http;
 
 namespace Capstone.Web.Controllers
 {
@@ -32,11 +33,21 @@ namespace Capstone.Web.Controllers
         /// <summary>
         /// Detailed view of the selected park 
         /// </summary>
+        [HttpGet]
         public IActionResult Detail(string parkCode)
         {
+            //Get the selected park
             ParkDetailVM vm = new ParkDetailVM();
-
             vm.Park = parkSqlDAO.GetPark(parkCode);
+
+            //Get the user's preferred temperature units from session and store in view
+            vm.TemperatureUnit = HttpContext.Session.GetString("TemperatureUnit");
+            
+            //If not set yet, set to default of Fahrenheit
+            if (String.IsNullOrEmpty(vm.TemperatureUnit))
+            {
+               vm.TemperatureUnit = "F";
+            }
 
             //Get weather forecast for selected park
             vm.FiveDayWeather = weatherSqlDAO.GetFiveDayWeatherForecast(parkCode);
@@ -45,12 +56,16 @@ namespace Capstone.Web.Controllers
         }
 
         /// <summary>
-        /// For if the user toggles between Fahrenheit and Celcius
+        /// For if the user changes temperature
         /// </summary>
-        //public IActionResult Detail(ParkDetailVM vm, string unit)
-        //{
-        //    return View(vm);
-        //}
+        [HttpPost]
+        public IActionResult Detail(string parkCode, string unit)
+        {
+            // Write the NEW LastAccess time to session so we can get it next time
+            HttpContext.Session.SetString("TemperatureUnit", unit);
+
+            return RedirectToAction("Detail", new { parkCode });
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

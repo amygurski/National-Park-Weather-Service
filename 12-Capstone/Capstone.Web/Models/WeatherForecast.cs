@@ -9,12 +9,11 @@ namespace Capstone.Web.Models
     {
         public string ParkCode { get; set; }
         public int FiveDayForecastValue { get; set; }
-        public int Low { get; set; } //Default - Fahrenheit
-        public int High { get; set; } //Default - Fahrenheit
+        public int Low { get; set; } //Default - Fahrenheit from Database
+        public int High { get; set; } //Default - Fahrenheit from Database
         public string Forecast { get; set; }
 
         //Derived properties for Celcius conversion
-        //TODO: Add boolean for isCelcius. In View, choose to display Model.Low or Model.LowCelcius dependent on boolean
         public double LowCelcius
         {
             get

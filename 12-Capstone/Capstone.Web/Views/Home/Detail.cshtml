@@ -53,38 +53,46 @@
 </table>
 
 <p>@Model.Park.ParkDescription</p>
+
+@* Change temperature units *@
 <form asp-controller="Home" asp-action="Detail" method="post">
-    @* Weather Forecast *@
-    <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active">
-            <input type="radio" name="unit" value="F" checked>°F
-        </label>
-        <label class="btn btn-primary">
-            <input type="radio" name="unit" value="C">°C
-        </label>
-        <input type="submit" value="Change" class="btn btn-warning" />
-    </div>
+    @*TODO: Toggle Temperature Unit. Currently using button instead since that required JS
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary active">
+                <input type="radio" name="unit" value="F" checked>°F
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="unit" value="C">°C
+            </label>
+        </div>*@
+    @* Have button display the opposite unit *@
+    <input type="hidden" name="parkCode" value="@Model.Park.ParkCode" />
+    <input type="hidden" name="unit" value="@(Model.TemperatureUnit == "C" ? "F" : "C")">
+    <input type="submit" value="Change to °@(Model.TemperatureUnit == "C" ? "F" : "C")" class="btn btn-warning" />
 </form>
 
+@* Weather Forecast *@
 @foreach (WeatherForecast weather in @Model.FiveDayWeather)
 {
     if (weather.FiveDayForecastValue == 1)
     {
         <h4>Today</h4>
     }
-    <div class="Weather">
-        <img src="~/images/weather/@(weather.ImageName).png" />
-        <p> High: @weather.High &nbsp</p>
-        <p> Low: @weather.Low </p>
-        @if (weather.TemperatureRecommendation != null)
-        {
-            <p>@weather.TemperatureRecommendation</p>
-        }
-        @if (weather.WeatherRecommendation != null)
-        {
-            <div class="weatherRec"> <p>@weather.WeatherRecommendation</p></div>
-        }
-    </div>
+<div class="Weather">
+    <img src="~/images/weather/@(weather.ImageName).png" alt="weather image"/>
+    @*<p> High: @weather.High &nbsp</p>
+      <p> Low: @weather.Low </p>*@
+    <p> High: @(Model.TemperatureUnit == "F" ? weather.High : (int)weather.HighCelcius) &nbsp</p>
+    <p> Low: @(Model.TemperatureUnit == "F" ? weather.Low : (int)weather.LowCelcius) </p>
+    @if (weather.TemperatureRecommendation != null)
+    {
+        <p>@weather.TemperatureRecommendation</p>
+    }
+    @if (weather.WeatherRecommendation != null)
+    {
+        <div class="weatherRec"> <p>@weather.WeatherRecommendation</p></div>
+    }
+</div>
 }
 
 

@@ -74,13 +74,18 @@ body {
     flex-wrap: wrap ;
     width: 150px;
 }
-.indexPic{
+
+img[alt="weather image"] {
+    width: 150px;
+    height: auto;
+}
+.indexPic {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
-    height:auto;
-    }
+    height: auto;
+}
 .indexPic > a > img{
     width:350px;
     padding: 25px 10px;
