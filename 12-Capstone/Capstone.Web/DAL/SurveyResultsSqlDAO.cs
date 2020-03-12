@@ -58,7 +58,7 @@ namespace Capstone.Web.DAL
                         from survey_result
                         join park on park.parkCode = survey_result.parkCode
                         group by survey_result.parkCode, parkName
-                        order by votes desc";
+                        order by votes desc, parkName asc";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
