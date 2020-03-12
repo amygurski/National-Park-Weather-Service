@@ -1,0 +1,16 @@
+﻿@model IList<Survey>
+@{
+    ViewData["Title"] = "SurveyResults";
+}
+
+<h2>The Nation's Favorite Parks</h2>
+
+<table>
+    @foreach (Survey survey in Model)
+    {
+        <tr>
+            <td>@survey.</td>
+        </tr>
+    }
+</table>
+
