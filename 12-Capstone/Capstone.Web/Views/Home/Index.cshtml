@@ -13,6 +13,7 @@
                 <a asp-controller="Home" asp-action="Detail" asp-route-parkCode=@item.ParkCode><img src="~/images/parks/@(item.ParkCode).jpg" alt="park image"></a>
                 <div class="home-right">
                     <h3><strong>@item.ParkName</strong> </h3>
+                    <p><em>@item.State</em></p>
                     <p> @item.ParkDescription</p>
                 </div>
             </div>
