@@ -8,6 +8,6 @@ namespace Capstone.Web.DAL
 {
     public interface IWeatherDAO
     {
-        IList<WeatherForecast> GetFiveDayWeatherForecast(string parkCode);
+        IList<WeatherForecast> GetFiveDayWeatherForecast(string location);
     }
 }

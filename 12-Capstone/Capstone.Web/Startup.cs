@@ -45,7 +45,8 @@ namespace Capstone.Web
             //For dependency injection
             connectionString = Configuration.GetConnectionString("Default");
             services.AddTransient<IParkDAO, ParkSqlDAO>((x) => new ParkSqlDAO(connectionString));
-            services.AddTransient<IWeatherDAO, WeatherSqlDAO>((x) => new WeatherSqlDAO(connectionString));
+            //services.AddTransient<IWeatherDAO, WeatherSqlDAO>((x) => new WeatherSqlDAO(connectionString));
+            services.AddTransient<IWeatherAPIDAO, WeatherAPIDAO>((x) => new WeatherAPIDAO());
             services.AddTransient<ISurveyResultsDAO, SurveyResultsSqlDAO>((x) => new SurveyResultsSqlDAO(connectionString));
         }
 
