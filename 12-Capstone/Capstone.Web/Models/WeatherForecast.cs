@@ -9,8 +9,8 @@ namespace Capstone.Web.Models
     {
         public string ParkCode { get; set; }
         public int FiveDayForecastValue { get; set; }
-        public int Low { get; set; } //Default - Fahrenheit from Database
-        public int High { get; set; } //Default - Fahrenheit from Database
+        public int Low { get; set; } //Default - Fahrenheit 
+        public int High { get; set; } //Default - Fahrenheit
         public string Forecast { get; set; }
 
         //Derived properties for Celcius conversion
@@ -29,15 +29,10 @@ namespace Capstone.Web.Models
                 return (High - 32) * (5.0/9.0);
             }
         }
-        public string ImageName
-        {
-            get
-            {
-                //remove spaces from forecast to get image name
-                string image = Forecast.Replace(" ", String.Empty);
-                return image;
-            }
-        }
+
+        public string Image { get; set; }
+
+        public string Day { get; set; } //Weather forecast day of week from API
 
         // Make recommendations to the page visitor depending on the forecast
         public string WeatherRecommendation

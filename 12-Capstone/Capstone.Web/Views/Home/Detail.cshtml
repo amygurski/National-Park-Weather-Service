@@ -3,7 +3,6 @@
     ViewData["Title"] = "Detail";
 }
 @*Display the selected park details and weather forecast for this park.*@
-
 <br />
 <img src="~/images/parks/@(Model.Park.ParkCode).jpg" alt="park detail image" />
 <h2>@Model.Park.ParkName</h2>
@@ -63,26 +62,28 @@
 </form>
 
 @* Weather Forecast *@
-@foreach (WeatherForecast weather in @Model.FiveDayWeather)
-{
-    if (weather.FiveDayForecastValue == 1)
+<div class="weather-panel">
+    @foreach (WeatherForecast weather in @Model.FiveDayWeather)
     {
-        <h4>Today</h4>
+        <div class="weather-card">
+            <div class="weather-header weather-row">@(weather.Day == "This Afternoon" ? "Today" : @weather.Day)</div>
+            <div class="weather-row"><img src="@(weather.Image)" alt="API weather image" class="img-rounded" /></div>
+            <div class="weather-row"><em>@weather.Forecast</em></div>
+            <div class="weather-row weather-high-low">
+                High: @(Model.TemperatureUnit == "F" ? weather.High : (int)weather.HighCelcius) &nbsp
+                Low: @(Model.TemperatureUnit == "F" ? weather.Low : (int)weather.LowCelcius)
+            </div>
+            @if (weather.TemperatureRecommendation != null)
+            {
+                <p class="weather-row">@weather.TemperatureRecommendation</p>
+            }
+            @if (weather.WeatherRecommendation != null)
+            {
+                <div class="weatherRec weather-row"><p>@weather.WeatherRecommendation</p></div>
+            }
+        </div>
     }
-    <div class="Weather">
-        <img src="~/images/weather/@(weather.ImageName).png" alt="weather image"/>
-        <p>High: @(Model.TemperatureUnit == "F" ? weather.High : (int)weather.HighCelcius) &nbsp</p>
-        <p>Low: @(Model.TemperatureUnit == "F" ? weather.Low : (int)weather.LowCelcius) </p>
-        @if (weather.TemperatureRecommendation != null)
-        {
-            <p>@weather.TemperatureRecommendation</p>
-        }
-        @if (weather.WeatherRecommendation != null)
-        {
-            <div class="weatherRec"><p>@weather.WeatherRecommendation</p></div>
-        }
-    </div>
-}
+</div>
 
 
 

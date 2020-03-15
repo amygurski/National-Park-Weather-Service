@@ -50,18 +50,42 @@ body {
     width: 25%;
 }
 
-/*Sets each weather day in 5-day weather forecast to inline-flex with width of 150 px*/
-.Weather{
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap ;
-    width: 150px;
+/* 5 day forecast as flex */
+.weather-panel {
+    display: flex;
+    margin-top: 10px;
 }
 
-/*matches image width to size of weather box */
-img[alt="weather image"] {
-    width: 150px;
+/* Each day forecast, fixed width, grid, with rounded edges and border */
+.weather-card {
+    width: 175px;
+    display: grid;
+    border-radius: 25px;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    margin: 0px 5px 0px 0px;
+}
+
+/* Add margin to elements inside a day forecast */
+.weather-row {
+    margin: 10px 5px 5px 10px;
+}
+
+/* Have high and low temperature display next to eachother */
+.weather-high-low {
+    display: inline-block;
+}
+
+/* The day of the week is the header */
+.weather-header {
+    font-size: 16px;
+    height: 10px;
+}
+
+/* This image is from the weather API and has a size of 86px x 86px*/
+img[alt="API weather image"] {
+    width: 86px;
     height: auto;
+    display: grid;
 }
 
 /* HOME PAGE STYLING */

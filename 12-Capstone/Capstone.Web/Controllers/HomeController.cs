@@ -13,11 +13,12 @@ namespace Capstone.Web.Controllers
     public class HomeController : Controller
     {
         private IParkDAO parkSqlDAO;
-        private IWeatherDAO weatherSqlDAO;
-        public HomeController(IParkDAO parkSqlDAO, IWeatherDAO weatherSqlDAO)
+        //private IWeatherDAO weatherSqlDAO;
+        private IWeatherAPIDAO weatherAPIDAO;
+        public HomeController(IParkDAO parkSqlDAO, IWeatherAPIDAO weatherAPIDAO)
         {
             this.parkSqlDAO = parkSqlDAO;
-            this.weatherSqlDAO = weatherSqlDAO;
+            this.weatherAPIDAO = weatherAPIDAO;
         }
 
         /// <summary>
@@ -49,8 +50,8 @@ namespace Capstone.Web.Controllers
                vm.TemperatureUnit = "F";
             }
 
-            //Get weather forecast for selected park
-            vm.FiveDayWeather = weatherSqlDAO.GetFiveDayWeatherForecast(parkCode);
+            //Get weather forecast for selected park from the National Weather Service API
+            vm.FiveDayWeather = weatherAPIDAO.GetFiveDayWeatherForecast(vm.Park.LatLong);
 
             return View(vm);
         }
