@@ -1,6 +1,6 @@
 # Module 3 Capstone - National Park Weather Service
 
-For this pair programming capstone project, we developed a dynamic web application using ASP .NET. It employed MVC design principles and used HTML, CSS, C#, and integrated with a SQL database for the park data. The project called for getting the weather from a database, but I made it so it pulls from the National Weather Service API instead.
+For this pair programming capstone project, we developed a dynamic web application using ASP .NET. It employed MVC design principles and used HTML, CSS, C#, and integrated with a SQL database for the park data. The project called for getting the weather from a database, but afterwards I made it so it pulls from the National Weather Service API instead.
 
 ## Screenshots of the application
  ###  **Home page**
