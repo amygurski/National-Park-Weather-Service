@@ -1,6 +1,32 @@
 # Module 3 Capstone - National Park Weather Service
 
-For this pair programming capstone project, we developed a dynamic web application using ASP .NET. It employed MVC design principles and used HTML, CSS, C#, and integrated with a SQL database for the park data.
+For this pair programming capstone project, we developed a dynamic web application using ASP .NET. It employed MVC design principles and used HTML, CSS, C#, and integrated with a SQL database for the park data. The project called for getting the weather from a database, but afterwards I made it so it pulls from the National Weather Service API instead.
+
+## Screenshots of the application
+ ###  **Home page**
+ Displays parks that are in the database
+
+![HomePage](https://github.com/amygurski/National-Park-Weather-Service/blob/master/img/HomePage.png)
+
+ ###  **Detail page**
+ The detail page display all of the information for the park from the database
+
+![DetailPage](https://github.com/amygurski/National-Park-Weather-Service/blob/master/img/ParkDetails.PNG)
+
+ ###  **Weather Forecast**
+ The 5 day weather forecast is getting pulled from the National Weather Service API. It also allows the user to change temperature units and stores the units in session.
+
+![WeatherForecast](https://github.com/amygurski/National-Park-Weather-Service/blob/master/img/Weather.PNG)
+
+ ###  **Survey**
+ Includes user validation
+
+![Survey](https://github.com/amygurski/National-Park-Weather-Service/blob/master/img/Survey.PNG)
+
+ ###  **Survey Results**
+ Completing the survey redirects to the survey results
+ 
+![SurveyResults](https://github.com/amygurski/National-Park-Weather-Service/blob/master/img/SurveyResults.PNG)
 
 ## Requirements
 
