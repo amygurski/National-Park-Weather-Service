@@ -35,7 +35,15 @@ namespace Capstone.Web.DAL
             foreach (Period period in forecast.properties.periods)
             {
                 WeatherForecast weather = new WeatherForecast();
-                
+
+                //Found an issue that if it's before the start time (early morning, 7 or 8 am), it shows the overnight temperature first
+                //We want to start with a part visit that day, so just skip the overnight temperature
+                //This has it start with the next day and will automatically print the next Day over the forecast rather than Today
+                if (period.number == 1 && !period.isDaytime)
+                {
+                    continue;
+                }
+
                 //Temporarily store daytime forecast to record on the next iteration
                 if (period.isDaytime)
                 {
